@@ -1,0 +1,48 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#E3EEE8',
+  'primaryTextColor':'#16211C',
+  'primaryBorderColor':'#1E5B3F',
+  'lineColor':'#1E5B3F',
+  'secondaryColor':'#FBF3E1',
+  'secondaryBorderColor':'#9A6A12',
+  'tertiaryColor':'#F6F8F7',
+  'fontFamily':'Calibri, Arial, sans-serif',
+  'fontSize':'14px'
+}}}%%
+graph TB
+
+  PR["Pull Request<br/>(prompt or code change)"]
+  AEGIS["Aegis v0<br/>(Layer 1)"]
+
+  subgraph EVAL["LAYER 2 — EVALUATION HARNESS"]
+    GOLDEN[("Golden Set<br/>25 incident descriptions")]
+    TC["Test Cases<br/>schema valid? enum valid?<br/>owning_team exact match?"]
+    SEM["Semantic Evals<br/>LLM-as-judge scoring<br/>of suggested_first_action"]
+    BEH["Behavior Evals<br/>3am-page trap · ambiguous input<br/>· injection attempt"]
+    GOLDEN --> TC
+    GOLDEN --> SEM
+    GOLDEN --> BEH
+  end
+
+  GATE{"CI Gate<br/>pass rate above threshold?"}
+  MERGE["Merge Allowed"]
+  BLOCK["Merge Blocked"]
+  SUITE[("Regression Suite<br/>only ever grows")]
+
+  PR --> AEGIS
+  AEGIS --> TC
+  AEGIS --> SEM
+  AEGIS --> BEH
+  TC --> GATE
+  SEM --> GATE
+  BEH --> GATE
+  GATE -->|"yes"| MERGE
+  GATE -->|"no"| BLOCK
+  TC -.-> SUITE
+  SEM -.-> SUITE
+  BEH -.-> SUITE
+
+  classDef eval fill:#E3EEE8,stroke:#1E5B3F
+  classDef gate fill:#FBF3E1,stroke:#9A6A12
+  class GOLDEN,TC,SEM,BEH eval
+  class GATE gate
