@@ -50,6 +50,20 @@ Engineers who can already get an agent working — the demo, the hackathon proto
 
 This repository was built with active research into the current (2026) state of the agent-framework, observability, and failure-recovery landscape rather than from static prior knowledge — the field moves fast enough that a stale reference here would actively mislead. Specific tools named throughout (LangGraph, Google ADK, Pydantic AI, Langfuse, LangSmith, MCP, and others) reflect their real current positioning at time of writing; frameworks and their comparative strengths will keep shifting, so treat the *architecture* here as the durable part and the *specific tool choices* as the current best answer, not a permanent one.
 
+## What This Deliberately Leaves Out
+
+Six layers is a teachable, buildable scope — not a complete picture of everything production AI systems eventually need. Once you've finished the capstone, these are the gaps most worth tackling next, roughly in the order they tend to bite:
+
+1. **Security as its own layer, not a side effect of reliability.** This repo's Layer 5 human-review gate covers *consequential actions*; it doesn't cover prompt-injection defense, PII redaction, least-privilege tool scoping, or audit logging for compliance. A reliable agent and a secure agent are related but genuinely different engineering problems — treat security as a seventh discipline, not something reliability work happens to also provide.
+2. **Cost governance at fleet scale.** Project 3 traces cost per run; it doesn't cover what happens once you have dozens of agents across a real organization — budget enforcement, model routing to cheaper models for simple tasks, or showback/chargeback across teams. Single-agent cost visibility and organization-wide FinOps are different scales of the same problem.
+3. **Prompt and policy governance across a fleet.** Project 2 versions and gates one agent's behavior. A real organization running many agents needs a shared registry, consistent eval standards across teams, and a way to know which agents are running which prompt version — the same problem Project 2 solves, one level up.
+4. **Long-term memory and continual learning.** Every project here treats each run as effectively stateless beyond Layer 4's retrieval. Agents that need to remember a specific user across sessions, or that should improve from accumulated production feedback rather than just being periodically re-evaluated, need a memory architecture this repo doesn't build.
+5. **Tenant isolation and data residency.** If Aegis ever serves more than one team, customer, or jurisdiction, keeping their data and context fully separated — and, depending on where they are, physically resident in the right region — becomes a hard requirement this repo's single-tenant scope never has to face.
+6. **Organizational process, not just system architecture.** Who's on call when the agent itself is broken? What does an incident review look like when the root cause is "the agent was confidently wrong," as opposed to a traditional outage? The six layers give you the technical tools; the team practices around them are a separate, equally real piece of work.
+7. **Continuous, adversarial red-teaming.** Project 2's behavior evals are a fixed, one-time-per-change set. An agent with growing tool access and growing autonomy benefits from an ongoing, evolving red-team practice — not just a regression suite that only catches failures shaped like the ones you already thought of.
+
+None of these are hard requirements for the seven projects in this repo — they're the honest list of what a real production deployment eventually needs beyond this architecture's scope, offered so you go looking for them deliberately instead of discovering the gap the hard way.
+
 ## License
 
 MIT — see [LICENSE](LICENSE). Use this, adapt it, teach with it.
