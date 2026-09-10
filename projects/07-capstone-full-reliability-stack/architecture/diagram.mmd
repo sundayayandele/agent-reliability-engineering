@@ -1,0 +1,72 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#E3EEE8',
+  'primaryTextColor':'#16211C',
+  'primaryBorderColor':'#1E5B3F',
+  'lineColor':'#1E5B3F',
+  'secondaryColor':'#FBF3E1',
+  'secondaryBorderColor':'#9A6A12',
+  'tertiaryColor':'#F6F8F7',
+  'fontFamily':'Calibri, Arial, sans-serif',
+  'fontSize':'13px'
+}}}%%
+graph TB
+
+  USER["Real Incident Report"]
+
+  subgraph L1["L1 · FOUNDATION"]
+    TRIAGE["Triage Agent"]
+    RUNBOOK["Runbook Agent"]
+    COMMS["Comms Agent"]
+  end
+
+  subgraph L5["L5 · ORCHESTRATION"]
+    GRAPH["State Graph<br/>routing · handoffs · fallback"]
+    REVIEW{{"Human Review Gate"}}
+  end
+
+  subgraph L4["L4 · DATA FOUNDATION"]
+    INDEX[("Versioned Vector Store<br/>runbooks & postmortems")]
+    FRESH["Freshness Checks"]
+  end
+
+  subgraph L3["L3 · TRACING"]
+    TRACES[("Trace Tree<br/>every LLM & tool call")]
+    REPLAY["Run Replay"]
+  end
+
+  subgraph L2["L2 · EVALUATION"]
+    EVALSUITE[("Regression Suite<br/>+ CI Gate")]
+  end
+
+  subgraph L6["L6 · FAILURE RECOVERY"]
+    HEAL["Detect → Diagnose →<br/>Resume → Add Test → Redeploy"]
+  end
+
+  OUTPUT["Sent Update /<br/>Resolved Incident"]
+
+  USER --> TRIAGE
+  TRIAGE --> GRAPH
+  GRAPH --> RUNBOOK
+  RUNBOOK --> INDEX
+  FRESH --> INDEX
+  GRAPH --> COMMS
+  COMMS --> REVIEW
+  REVIEW -->|approved| OUTPUT
+
+  TRIAGE -.-> TRACES
+  RUNBOOK -.-> TRACES
+  COMMS -.-> TRACES
+  GRAPH -.-> TRACES
+
+  TRACES --> HEAL
+  HEAL -->|"add test"| EVALSUITE
+  HEAL -->|"resume"| GRAPH
+  EVALSUITE -->|"gates changes"| TRIAGE
+  TRACES --> REPLAY
+
+  classDef build fill:#E3EEE8,stroke:#1E5B3F
+  classDef observe fill:#F6F8F7,stroke:#CBD8D1
+  classDef recover fill:#FBF3E1,stroke:#9A6A12
+  class TRIAGE,RUNBOOK,COMMS,EVALSUITE build
+  class INDEX,FRESH,TRACES,REPLAY observe
+  class GRAPH,REVIEW,HEAL recover

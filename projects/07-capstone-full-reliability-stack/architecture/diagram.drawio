@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Project 7 - Capstone: Full Reliability Stack" id="diagram-1">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="user" value="Real Incident Report" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="560" y="20" width="260" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="g-l1" value="L1 · FOUNDATION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;verticalAlign=top;fontFamily=Calibri;fontSize=12;fontStyle=1;fontColor=#16211C;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="500" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="triage" value="Triage Agent" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="560" y="180" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="runbook" value="Runbook Agent" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="420" y="300" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="comms" value="Comms Agent" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="660" y="300" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="g-l5" value="L5 · ORCHESTRATION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;verticalAlign=top;fontFamily=Calibri;fontSize=12;fontStyle=1;fontColor=#16211C;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="960" y="140" width="400" height="380" as="geometry"/>
+        </mxCell>
+        <mxCell id="graph" value="State Graph
+routing, handoffs, fallback" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="180" width="320" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="review" value="Human Review Gate" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="380" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="g-l4" value="L4 · DATA FOUNDATION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F6F8F7;strokeColor=#CBD8D1;verticalAlign=top;fontFamily=Calibri;fontSize=12;fontStyle=1;fontColor=#16211C;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="300" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="fresh" value="Freshness Checks" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="340" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="index" value="Versioned Vector Store
+runbooks &amp; postmortems" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="460" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="g-l3" value="L3 · TRACING" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F6F8F7;strokeColor=#CBD8D1;verticalAlign=top;fontFamily=Calibri;fontSize=12;fontStyle=1;fontColor=#16211C;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="420" y="460" width="320" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="traces" value="Trace Tree
+every LLM &amp; tool call" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="460" y="500" width="240" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="replay" value="Run Replay" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="460" y="620" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="output" value="Sent Update / Resolved Incident" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="800" y="700" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="g-l6" value="L6 · FAILURE RECOVERY" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;verticalAlign=top;fontFamily=Calibri;fontSize=12;fontStyle=1;fontColor=#16211C;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="660" width="340" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="heal" value="Detect, Diagnose, Resume, Add Test, Redeploy" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="700" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="g-l2" value="L2 · EVALUATION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;verticalAlign=top;fontFamily=Calibri;fontSize=12;fontStyle=1;fontColor=#16211C;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="400" y="840" width="700" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="evalsuite" value="Regression Suite + CI Gate" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="880" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="user" target="triage">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="triage" target="graph">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="graph" target="runbook">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="runbook" target="index">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="fresh" target="index">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="graph" target="comms">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="comms" target="review">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="approved" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="review" target="output">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="traces" target="replay">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" value="add test" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="heal" target="evalsuite">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" value="resume" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="heal" target="graph">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e12" value="gates changes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="evalsuite" target="triage">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;dashed=1;" edge="1" parent="1" source="triage" target="traces">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;dashed=1;" edge="1" parent="1" source="runbook" target="traces">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;dashed=1;" edge="1" parent="1" source="comms" target="traces">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="traces" target="heal">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
