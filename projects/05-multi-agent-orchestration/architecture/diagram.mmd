@@ -1,0 +1,48 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#E3EEE8',
+  'primaryTextColor':'#16211C',
+  'primaryBorderColor':'#1E5B3F',
+  'lineColor':'#1E5B3F',
+  'secondaryColor':'#FBF3E1',
+  'secondaryBorderColor':'#9A6A12',
+  'tertiaryColor':'#F6F8F7',
+  'fontFamily':'Calibri, Arial, sans-serif',
+  'fontSize':'14px'
+}}}%%
+graph TB
+
+  INPUT["Incident Report"]
+
+  subgraph GRAPH["LAYER 5 — STATE GRAPH"]
+    TRIAGE["Triage Agent<br/>(Project 1)"]
+    ROUTE{"Severity Routing"}
+    RUNBOOK["Runbook Agent<br/>(Project 4 retrieval)"]
+    CONF{"Confidence Check"}
+    COMMS["Comms Agent<br/>drafts update, never sends"]
+    ESCALATE["Escalate to Human<br/>no documented fix"]
+  end
+
+  REVIEW{{"Human Review Gate<br/>mandatory, cannot be bypassed"}}
+  SENT["Update Sent"]
+  TRACE["Every handoff logged<br/>to Layer 3 tracing"]
+
+  INPUT --> TRIAGE
+  TRIAGE --> ROUTE
+  ROUTE -->|"high severity"| RUNBOOK
+  ROUTE -->|"low severity"| COMMS
+  RUNBOOK --> CONF
+  CONF -->|"documented fix found"| COMMS
+  CONF -->|"low confidence / empty"| ESCALATE
+  COMMS --> REVIEW
+  REVIEW -->|"approved"| SENT
+  REVIEW -->|"rejected"| COMMS
+  ESCALATE --> REVIEW
+
+  TRIAGE -.-> TRACE
+  RUNBOOK -.-> TRACE
+  COMMS -.-> TRACE
+
+  classDef agent fill:#E3EEE8,stroke:#1E5B3F
+  classDef gate fill:#FBF3E1,stroke:#9A6A12
+  class TRIAGE,RUNBOOK,COMMS agent
+  class REVIEW,ROUTE,CONF gate
