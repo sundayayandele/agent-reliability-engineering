@@ -1,0 +1,49 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#E3EEE8',
+  'primaryTextColor':'#16211C',
+  'primaryBorderColor':'#1E5B3F',
+  'lineColor':'#1E5B3F',
+  'secondaryColor':'#FBF3E1',
+  'secondaryBorderColor':'#9A6A12',
+  'tertiaryColor':'#F6F8F7',
+  'fontFamily':'Calibri, Arial, sans-serif',
+  'fontSize':'14px'
+}}}%%
+graph TB
+
+  DOCS[("Source Corpus<br/>15+ runbooks & postmortems<br/>incl. 1 retired doc")]
+
+  subgraph INGEST["INGESTION PIPELINE"]
+    CHUNK["Semantic Chunking<br/>by paragraph/section"]
+    META["Metadata Attach<br/>source · section · status<br/>current / retired"]
+    EMBED["Embed"]
+    CHUNK --> META --> EMBED
+  end
+
+  subgraph INDEX["LAYER 4 — VERSIONED VECTOR STORE"]
+    VNEW["Build New Version"]
+    SMOKE{"Smoke Test<br/>known-good query passes?"}
+    LIVE[("Live Index<br/>retired docs filtered")]
+    PREV[("Previous Version<br/>kept for rollback")]
+    VNEW --> SMOKE
+    SMOKE -->|"pass"| LIVE
+    SMOKE -->|"fail, abort cutover"| PREV
+  end
+
+  FRESH["Freshness Check Job<br/>flags docs past age threshold<br/>or superseded by a newer version"]
+
+  AEGIS["Aegis<br/>(Layers 1-3)"]
+  QUERY["Query: retired-process question"]
+
+  DOCS --> CHUNK
+  EMBED --> VNEW
+  LIVE --> AEGIS
+  QUERY --> AEGIS
+  AEGIS -->|"retrieves from"| LIVE
+  FRESH -->|"scans"| LIVE
+  FRESH -->|"flags for review"| VNEW
+
+  classDef ingest fill:#E3EEE8,stroke:#1E5B3F
+  classDef index fill:#FBF3E1,stroke:#9A6A12
+  class CHUNK,META,EMBED ingest
+  class VNEW,SMOKE,LIVE,PREV index

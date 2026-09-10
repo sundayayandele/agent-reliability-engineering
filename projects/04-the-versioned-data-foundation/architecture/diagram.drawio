@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Project 4 - The Versioned Data Foundation" id="diagram-1">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="docs" value="Source Corpus
+15+ runbooks &amp; postmortems, incl. 1 retired doc" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="g-ingest" value="INGESTION PIPELINE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F6F8F7;strokeColor=#CBD8D1;verticalAlign=top;fontFamily=Calibri;fontSize=12;fontStyle=1;fontColor=#16211C;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="140" width="280" height="340" as="geometry"/>
+        </mxCell>
+        <mxCell id="chunk" value="Semantic Chunking
+by paragraph/section" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="meta" value="Metadata Attach
+source, section, status (current/retired)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="240" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="embed" value="Embed" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="420" width="240" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="fresh" value="Freshness Check Job
+flags docs past age threshold or superseded" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="400" y="180" width="320" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="g-index" value="LAYER 4 — VERSIONED VECTOR STORE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F6F8F7;strokeColor=#CBD8D1;verticalAlign=top;fontFamily=Calibri;fontSize=12;fontStyle=1;fontColor=#16211C;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="700" height="480" as="geometry"/>
+        </mxCell>
+        <mxCell id="vnew" value="Build New Version" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="200" y="580" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="smoke" value="Smoke Test
+known-good query passes?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="200" y="700" width="240" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="live" value="Live Index
+retired docs filtered" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="480" y="880" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="prev" value="Previous Version
+kept for rollback" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="200" y="880" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="query" value="Query: retired-process question" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="800" y="900" width="260" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="aegis" value="Aegis
+(Layers 1-3)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1040" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="docs" target="chunk">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="chunk" target="meta">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="meta" target="embed">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="embed" target="vnew">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="flags for review" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="fresh" target="vnew">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="scans" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="fresh" target="live">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="vnew" target="smoke">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="pass" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="smoke" target="live">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" value="fail, abort cutover" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="smoke" target="prev">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" value="retrieves from" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="live" target="aegis">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="query" target="aegis">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
