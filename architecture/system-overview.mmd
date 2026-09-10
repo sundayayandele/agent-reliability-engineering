@@ -1,0 +1,49 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#E3EEE8',
+  'primaryTextColor':'#16211C',
+  'primaryBorderColor':'#1E5B3F',
+  'lineColor':'#1E5B3F',
+  'secondaryColor':'#FBF3E1',
+  'secondaryBorderColor':'#9A6A12',
+  'tertiaryColor':'#F6F8F7',
+  'tertiaryBorderColor':'#CBD8D1',
+  'fontFamily':'Calibri, Arial, sans-serif',
+  'fontSize':'14px'
+}}}%%
+graph TB
+
+  USER["Real User / Real Request"]
+
+  subgraph BUILD["PHASE 1 — BUILD  (learn + test)"]
+    direction TB
+    L1["LAYER 1 — Foundation Stack<br/>Claude Agent SDK · LangGraph<br/>Pydantic AI · Google ADK · MCP Tools"]
+    L2["LAYER 2 — Evaluation<br/>Test Cases · Semantic Evals<br/>Behavior Evals · CI Checks · Regression Suite"]
+    L1 --> L2
+  end
+
+  subgraph OBSERVE["PHASE 2 — OBSERVE  (trace + ground)"]
+    direction TB
+    L3["LAYER 3 — Tracing<br/>LLM Traces · Tool Calls<br/>Latency & Cost · Retries & Loops · Run Replay"]
+    L4["LAYER 4 — Data Foundation<br/>Source Docs · Metadata<br/>Versioning · Vector Store · Freshness Checks"]
+    L3 --> L4
+  end
+
+  subgraph RECOVER["PHASE 3 — RECOVER  (control + improve)"]
+    direction TB
+    L5["LAYER 5 — Orchestration<br/>State Graph · Routing<br/>Handoffs · Human Review · Fallback Paths"]
+    L6["LAYER 6 — Failure Recovery<br/>Detect · Diagnose<br/>Resume · Add Test · Redeploy"]
+    L5 --> L6
+  end
+
+  USER --> L1
+  L2 --> L3
+  L4 --> L5
+  L6 -.closes the loop.-> L2
+  L6 -.redeploys.-> L1
+
+  classDef build fill:#E3EEE8,stroke:#1E5B3F
+  classDef observe fill:#F6F8F7,stroke:#CBD8D1
+  classDef recover fill:#FBF3E1,stroke:#9A6A12
+  class L1,L2 build
+  class L3,L4 observe
+  class L5,L6 recover
