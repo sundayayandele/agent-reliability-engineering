@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Project 1 - First Production-Shaped Agent" id="diagram-1">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="input" value="Raw Incident Text
+'checkout is slow'" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="20" y="200" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="g-agent" value="AEGIS v0 (Layer 1: Foundation Stack)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F6F8F7;strokeColor=#CBD8D1;verticalAlign=top;fontFamily=Calibri;fontSize=12;fontStyle=1;fontColor=#16211C;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="140" width="620" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="core" value="Agent Core
+LangGraph / Pydantic AI / Google ADK / Claude Agent SDK" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="350" y="200" width="260" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="schema" value="Typed Output Schema
+severity, owning_team, first_action, confidence" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="660" y="200" width="260" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="g-mcp" value="MCP TOOL LAYER" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;verticalAlign=top;fontFamily=Calibri;fontSize=12;fontStyle=1;fontColor=#16211C;align=left;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="20" width="620" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="tool" value="Service Ownership Lookup
+(MCP server)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="350" y="50" width="260" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="data" value="Ownership Table
+JSON / SQLite" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FBF3E1;strokeColor=#9A6A12;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="660" y="50" width="260" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="output" value="Structured Triage Result" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3EEE8;strokeColor=#1E5B3F;fontColor=#16211C;fontSize=13;fontFamily=Calibri;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="200" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="input" target="core">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="needs ownership info?" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="core" target="tool">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="tool" target="core">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="tool" target="data">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="core" target="schema">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#1E5B3F;fontFamily=Calibri;fontSize=11;fontColor=#16211C;" edge="1" parent="1" source="schema" target="output">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

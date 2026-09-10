@@ -1,0 +1,38 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#E3EEE8',
+  'primaryTextColor':'#16211C',
+  'primaryBorderColor':'#1E5B3F',
+  'lineColor':'#1E5B3F',
+  'secondaryColor':'#FBF3E1',
+  'secondaryBorderColor':'#9A6A12',
+  'tertiaryColor':'#F6F8F7',
+  'fontFamily':'Calibri, Arial, sans-serif',
+  'fontSize':'14px'
+}}}%%
+graph LR
+
+  INPUT["Raw Incident Text<br/>'checkout is slow'"]
+
+  subgraph AGENT["AEGIS v0 (Layer 1: Foundation Stack)"]
+    REASON["Agent Core<br/>LangGraph / Pydantic AI /<br/>Google ADK / Claude Agent SDK"]
+    SCHEMA["Typed Output Schema<br/>severity · owning_team<br/>first_action · confidence"]
+  end
+
+  subgraph MCP["MCP TOOL LAYER"]
+    TOOL["Service Ownership Lookup<br/>(MCP server)"]
+    DATA[("Ownership Table<br/>JSON / SQLite")]
+    TOOL --> DATA
+  end
+
+  OUTPUT["Structured Triage Result"]
+
+  INPUT --> REASON
+  REASON -->|"needs ownership info?"| TOOL
+  TOOL --> REASON
+  REASON --> SCHEMA
+  SCHEMA --> OUTPUT
+
+  classDef agent fill:#E3EEE8,stroke:#1E5B3F
+  classDef tool fill:#FBF3E1,stroke:#9A6A12
+  class REASON,SCHEMA agent
+  class TOOL,DATA tool
