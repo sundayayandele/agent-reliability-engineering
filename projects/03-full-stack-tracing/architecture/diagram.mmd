@@ -1,0 +1,42 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#E3EEE8',
+  'primaryTextColor':'#16211C',
+  'primaryBorderColor':'#1E5B3F',
+  'lineColor':'#1E5B3F',
+  'secondaryColor':'#FBF3E1',
+  'secondaryBorderColor':'#9A6A12',
+  'tertiaryColor':'#F6F8F7',
+  'fontFamily':'Calibri, Arial, sans-serif',
+  'fontSize':'14px'
+}}}%%
+graph TB
+
+  AEGIS["Aegis<br/>(Layers 1-2)"]
+
+  subgraph TRACE["LAYER 3 — TRACING"]
+    SPAN1["Span: LLM Call<br/>prompt · completion<br/>tokens · latency · cost"]
+    SPAN2["Span: Tool Call<br/>tool name · arguments<br/>raw result"]
+    LOOP["Loop / Retry Detector<br/>flags repeated identical<br/>tool calls in one run"]
+    TREE[("Trace Tree<br/>one connected run")]
+    SPAN1 --> TREE
+    SPAN2 --> TREE
+    LOOP --> TREE
+  end
+
+  DASH["Cost & Latency Dashboards<br/>aggregated across all runs"]
+  REPLAY["Run Replay<br/>re-execute a trace ID's<br/>tool calls against original args"]
+  ENGINEER["Engineer Investigating<br/>a Regression"]
+
+  AEGIS --> SPAN1
+  AEGIS --> SPAN2
+  AEGIS --> LOOP
+  TREE --> DASH
+  TREE --> REPLAY
+  ENGINEER -->|"picks a trace ID"| REPLAY
+  REPLAY -->|"new output vs. original"| ENGINEER
+  TREE -->|"root cause: which step changed"| ENGINEER
+
+  classDef trace fill:#E3EEE8,stroke:#1E5B3F
+  classDef human fill:#FBF3E1,stroke:#9A6A12
+  class SPAN1,SPAN2,LOOP,TREE trace
+  class ENGINEER human
