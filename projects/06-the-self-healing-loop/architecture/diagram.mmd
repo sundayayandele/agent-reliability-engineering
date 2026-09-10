@@ -1,0 +1,42 @@
+%%{init: {'theme':'base', 'themeVariables': {
+  'primaryColor':'#E3EEE8',
+  'primaryTextColor':'#16211C',
+  'primaryBorderColor':'#1E5B3F',
+  'lineColor':'#1E5B3F',
+  'secondaryColor':'#FBF3E1',
+  'secondaryBorderColor':'#9A6A12',
+  'tertiaryColor':'#F6F8F7',
+  'fontFamily':'Calibri, Arial, sans-serif',
+  'fontSize':'14px'
+}}}%%
+graph TB
+
+  TRACE["Layer 3 Trace Stream<br/>(from the running Aegis)"]
+
+  subgraph LOOP["LAYER 6 — SELF-HEALING LOOP (MAPE-K lineage)"]
+    DETECT["1. Detect<br/>flags a run matching<br/>a known failure signature"]
+    DIAGNOSE["2. Diagnose<br/>classifies failure type:<br/>malformed args · stale context<br/>· repeated loop · unsupported answer"]
+    RESUME["3. Resume<br/>restarts from last good<br/>checkpoint in the state graph<br/>(Project 5), not from scratch"]
+    ADDTEST["4. Add Test<br/>writes a permanent<br/>regression test"]
+    REDEPLOY["5. Redeploy<br/>ships the fix through<br/>the normal CI gate"]
+    DETECT --> DIAGNOSE --> RESUME --> ADDTEST --> REDEPLOY
+  end
+
+  TAXONOMY[("Failure Taxonomy<br/>4+ classes, each with<br/>a distinct fix")]
+  SUITE[("Project 2 Regression Suite")]
+  GATE["Project 2 CI Gate"]
+  STATEGRAPH["Project 5 State Graph<br/>(checkpoints)"]
+  LIVE["Aegis, Running"]
+
+  TRACE --> DETECT
+  DIAGNOSE --> TAXONOMY
+  RESUME --> STATEGRAPH
+  ADDTEST --> SUITE
+  REDEPLOY --> GATE
+  GATE -->|"passes"| LIVE
+  LIVE -.produces.-> TRACE
+
+  classDef loop fill:#FBF3E1,stroke:#9A6A12
+  classDef ref fill:#E3EEE8,stroke:#1E5B3F
+  class DETECT,DIAGNOSE,RESUME,ADDTEST,REDEPLOY loop
+  class TAXONOMY,SUITE,GATE,STATEGRAPH,LIVE ref
